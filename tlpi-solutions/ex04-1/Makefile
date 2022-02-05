@@ -6,7 +6,7 @@ include ../Makefile.inc
 all: tee
 
 tee: tee.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $< $(TLPI_LIB)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $< $(MY_LIB) $(TLPI_LIB)
 
 clean:
 	$(RM_F) *.o tee

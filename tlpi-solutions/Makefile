@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-DIRS = ex04-1
+DIRS = mylib ex04-1
 
 all:
 	@for d in ${DIRS}; do ${MAKE} -C $$d all || break; done
