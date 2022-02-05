@@ -1,0 +1,19 @@
+#include "mylib.h"
+#include "tlpi_hdr.h"
+
+
+void usage_error(const char *progname)
+{
+    usageErr("%s FILE\n", progname);
+}
+
+
+int main(int argc, char *argv[])
+{
+    if (argc < 1) {
+        fprintf(stderr, "%s: too few arguments\n", argv[0]);
+        usage_error(argv[0]);
+    }
+
+    return 0;
+}
