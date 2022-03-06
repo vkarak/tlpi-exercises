@@ -66,6 +66,8 @@ void test_rwv()
     // 2. Split it virtually in chunks
     // 3. Write through `xwritev()`
 
+    // We allocate one byte more for adding a null byte to enable dumping the
+    // buffers for debugging.
     char *wbuff = malloc(NUM_CHUNKS*CHUNK_LEN + 1);
     char *rbuff = malloc(NUM_CHUNKS*CHUNK_LEN + 1);
     if (!wbuff || !rbuff) {
