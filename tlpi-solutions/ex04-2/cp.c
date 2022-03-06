@@ -33,7 +33,8 @@ int main(int argc, char *argv[])
     char buff[IO_BUFF_SIZE];
     ssize_t nr_bytes;
     while ( (nr_bytes = read(src_fd, buff, sizeof(buff))) != 0) {
-        writep(dst_fd, buff, nr_bytes);
+        if (writep(dst_fd, buff, nr_bytes) < 0)
+            errExit("writep() failed");
     }
 
     close(src_fd);

@@ -30,7 +30,9 @@ int main(int argc, char *argv[])
     }
 
     const char *message = "hello\n";
-    writep(fd, message, strlen(message));
+    if (writep(fd, message, strlen(message)) < 0)
+        errExit("writep() failed");
+
     close(fd);
     return 0;
 }

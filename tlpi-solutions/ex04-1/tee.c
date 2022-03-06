@@ -43,8 +43,11 @@ int main(int argc, char *argv[])
     char buff[IO_BUFF_SIZE];
     ssize_t nr_bytes;
     while ( (nr_bytes = read(STDIN_FILENO, buff, sizeof(buff))) != 0) {
-        writep(STDOUT_FILENO, buff, nr_bytes);
-        writep(fd, buff, nr_bytes);
+        if (writep(STDOUT_FILENO, buff, nr_bytes) < 0)
+            errExit("%s:%d:writep() failed", __FILE__, __LINE__);
+
+        if (writep(fd, buff, nr_bytes) < 0)
+            errExit("%s:%d:writep() failed", __FILE__, __LINE__);
     }
 
     close(fd);

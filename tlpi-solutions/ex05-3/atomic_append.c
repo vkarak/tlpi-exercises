@@ -51,7 +51,8 @@ int main(int argc, char *argv[])
                 errExit("could not lseek in file '%s'", filename);
             }
         }
-        writep(fd, &token, sizeof(token));
+        if (writep(fd, &token, sizeof(token)) < 0)
+            errExit("writep() failed");
     }
 
     close(fd);
