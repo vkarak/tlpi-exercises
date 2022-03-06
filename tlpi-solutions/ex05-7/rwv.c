@@ -64,7 +64,7 @@ void test_rwv()
 {
     // 1. Allocate a large contiguous write buffer
     // 2. Split it virtually in chunks
-    // 3. Write through `xritev()`
+    // 3. Write through `xwritev()`
 
     char *wbuff = malloc(NUM_CHUNKS*CHUNK_LEN + 1);
     char *rbuff = malloc(NUM_CHUNKS*CHUNK_LEN + 1);
