@@ -8,15 +8,13 @@
 #include <stddef.h>
 #include <unistd.h>
 
-#define RUN_TEST(fn) {printf("%s... ", #fn); (fn)(); printf("[OK]\n");}
+#define RUN_TEST(fn) do {printf("%s... ", #fn); (fn)(); printf("[OK]\n");} while (0);
 
 /*
  *  Persistent write.
  *
- *  This function will try to write all count bytes persistently or fail and
- *  exit if it does not succeed.
+ *  This function will try to write all count bytes persistently.
  */
 ssize_t writep(int fd, const void *buf, size_t count);
-
 
 #endif  // _MYLIB_H

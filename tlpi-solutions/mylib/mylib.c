@@ -12,4 +12,6 @@ ssize_t writep(int fd, const void *buf, size_t count)
         }
         total_written += nr_bytes;
     }
+
+    return total_written;
 }
