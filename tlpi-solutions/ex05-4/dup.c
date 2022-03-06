@@ -9,8 +9,6 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#define RUN_TEST(fn) {printf("%s... ", #fn); fn(); printf("[OK]\n");}
-
 int xdup(int oldfd)
 {
     if (oldfd < 0) {

@@ -7,6 +7,8 @@
 
 #include <stddef.h>
 
+#define RUN_TEST(fn) {printf("%s... ", #fn); (fn)(); printf("[OK]\n");}
+
 /*
  *  Persistent write.
  *
