@@ -135,8 +135,6 @@ int xsetenv(const char *name, const char *value, int overwrite)
 
 static void test_xsetenv(void **state)
 {
-    int rc;
-
     assert_int_equal(xsetenv(NULL, "foo", 0), -1);
     assert_int_equal(errno, EINVAL);
 
