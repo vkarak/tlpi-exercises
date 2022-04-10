@@ -3,10 +3,10 @@
 include ../Makefile.inc
 
 
-all: {exec_name}
+all: xmalloc
 
-{exec_name}: {exec_name}.c
+xmalloc: xmalloc.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< $(MY_LIB) $(TLPI_LIB) -lcmocka
 
 clean:
-	$(RM_F) *.o {exec_name}
+	$(RM_F) *.o xmalloc

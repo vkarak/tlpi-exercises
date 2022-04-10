@@ -8,6 +8,9 @@
 #include <stddef.h>
 #include <unistd.h>
 
+#define XMIN(a, b) ((a) < (b) ? (a) : (b))
+#define XMAX(a, b) ((a) > (b) ? (a) : (b))
+
 #define RUN_TEST(fn) do {printf("%s... ", #fn); (fn)(); printf("[OK]\n");} while (0);
 
 /*
