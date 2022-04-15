@@ -193,7 +193,7 @@ const freelist_node_t *freelist_item(size_t index)
 
 bool is_freelist_sane()
 {
-    // Assert that the free list is not broken
+    // Check that the free list is not broken
     freelist_node_t *last = NULL;
     freelist_node_t *fp = FreeList;
     while (fp) {
@@ -379,5 +379,4 @@ int main(int argc, char *argv[])
         cmocka_unit_test(test_xmalloc_multiple),
     };
     return cmocka_run_group_tests(tests, NULL, NULL);
-    return 0;
 }
