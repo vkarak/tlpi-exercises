@@ -167,7 +167,7 @@ size_t freelist_size()
     freelist_node_t *fp = FreeList;
     size_t ret = 0;
     while (fp) {
-        ret++;
+        ++ret;
         fp = fp->next;
     }
 
@@ -185,7 +185,7 @@ const freelist_node_t *freelist_item(size_t index)
         }
 
         fp = fp->next;
-        i++;
+        ++i;
     }
 
     return NULL;
