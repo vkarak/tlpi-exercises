@@ -67,6 +67,17 @@ void usage_error(const char *progname)
 
 int main(int argc, char *argv[])
 {
+    // De-escalate our privileges before doing anything else
+    uid_t ruid, euid, suid;
+    getresuid(&ruid, &euid, &suid);
+    if (euid == 0) {
+        if (ruid) {
+            seteuid(ruid);
+        } else if (suid) {
+            seteuid(suid);
+        }
+    }
+
     if (argc < 2) {
         fprintf(stderr, "%s: too few arguments\n", argv[0]);
         usage_error(argv[0]);
