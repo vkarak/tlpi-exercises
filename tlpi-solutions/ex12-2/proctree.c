@@ -85,28 +85,29 @@ void proctree_delete(proctree_t *procs, size_t nr_procs)
     free(procs);
 }
 
-void _do_proctree_print(const proctree_t *proc, size_t level)
+void _do_proctree_print(const proctree_t *proc, size_t level, const char *prefix)
 {
     char line[LINE_MAX];
-    *line = 0;
-    // strcat(line, "├─");
+    *line = '\0';
     for (size_t i = 0; i < level; ++i) {
         strcat(line, "\t");
     }
     if (level) {
-        strcat(line, "^");
+        strcat(line, prefix);
+        strcat(line, "──");
     }
     strcat(line, proc->name);
     printf("%s (pid: %d)\n", line, proc->pid);
     for (size_t i = 0; i < proc->nr_child; ++i) {
-        _do_proctree_print(proc->children[i], level + 1);
+        _do_proctree_print(proc->children[i], level + 1,
+                           (i == proc->nr_child-1) ? "└─" : "├─");
     }
 }
 
 
 void proctree_print(const proctree_t *root)
 {
-    _do_proctree_print(root, 0);
+    _do_proctree_print(root, 0, "");
 }
 
 int main(int argc, char *argv[])
