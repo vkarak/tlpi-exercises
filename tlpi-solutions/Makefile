@@ -8,7 +8,7 @@ DIRS = \
 	ex07-1 ex07-2 \
 	ex08-1 ex08-2 \
 	ex09-3 \
-	ex12-1
+	ex12-1 ex12-2
 
 all:
 	@for d in ${DIRS}; do ${MAKE} -C $$d all || break; done
