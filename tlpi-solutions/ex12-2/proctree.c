@@ -35,7 +35,7 @@ int _proc_cmp(const void *x, const void *y)
 
 /*
  * Create a process tree from a list of sorted processes and return a pointer to
- * the init process. The complexity is O(nlogn).
+ * the init process entry. The complexity is O(nlogn).
  */
 proctree_t *proctree_build_tree(proctree_t *procs, size_t nr_procs)
 {
