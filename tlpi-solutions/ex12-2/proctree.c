@@ -184,6 +184,9 @@ int main(int argc, char *argv[])
     // Sort processes by their PID and then build the process tree
     qsort(proctab, nr_procs, sizeof(*proctab), _proc_cmp);
     proctree_t *ptree = proctree_build_tree(proctab, nr_procs);
+    if (!ptree) {
+        errExit("proctree_build_tree() failed");
+    }
     proctree_print(ptree);
     proctree_delete(ptree, nr_procs);
     return 0;
