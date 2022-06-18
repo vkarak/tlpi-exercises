@@ -104,7 +104,6 @@ void _do_proctree_print(const proctree_t *proc, size_t level, const char *prefix
     }
 }
 
-
 void proctree_print(const proctree_t *root)
 {
     _do_proctree_print(root, 0, "");
@@ -185,7 +184,7 @@ int main(int argc, char *argv[])
     // Sort processes by their PID and then build the process tree
     qsort(proctab, nr_procs, sizeof(*proctab), _proc_cmp);
     proctree_t *ptree = proctree_build_tree(proctab, nr_procs);
-    printf("Number of processes: %ld\n", nr_procs);
-    proctree_print(proctab);
+    proctree_print(ptree);
+    proctree_delete(ptree, nr_procs);
     return 0;
 }
